@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.4.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
 }
 
 group = 'com.globant.brainwaves'
@@ -9,31 +9,38 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
 }
 
-AkkaVersion = "2.6.1"
-AlpakkaVersion = "1.1.2"
-AlpakkaKafkaVersion = "1.1.0"
+ext {
+    set('springCloudVersion', "Hoxton.RC2")
+    set('AkkaVersion', "2.6.1")
+    set('AlpakkaVersion', "1.1.2")
+    set('AlpakkaKafkaVersion', "1.1.0")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation "com.lightbend.akka:akka-stream-alpakka-elasticsearch:${AlpakkaVersion}"
-	implementation "com.typesafe.akka:akka-stream-kafka:${AlpakkaKafkaVersion}"
-	implementation "com.typesafe.akka:akka-stream:${AkkaVersion}"
-	implementation "com.typesafe.akka:akka-actor-typed:${AkkaVersion}"
-	implementation "com.typesafe.akka:akka-actor:${AkkaVersion}"
-	// for JSON in Java
-	implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.0"
-	implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.0"
-	// Logging
-	implementation "com.typesafe.akka:akka-slf4j:${AkkaVersion}"
-	implementation "ch.qos.logback:logback-classic:1.2.3"
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    //implementation "com.lightbend.akka:akka-stream-alpakka-elasticsearch:${AlpakkaVersion}"
+    //implementation "com.typesafe.akka:akka-stream-kafka:${AlpakkaKafkaVersion}"
+    //implementation "com.typesafe.akka:akka-stream:${AkkaVersion}"
+    //implementation "com.typesafe.akka:akka-actor-typed:${AkkaVersion}"
+    //implementation "com.typesafe.akka:akka-actor:${AkkaVersion}"
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

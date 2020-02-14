@@ -1,0 +1,32 @@
+server:
+  port: 8005
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: BWSegmenter
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+info:
+  # static properties
+  app:
+    name: ${spring.application.name}
+    description: --
+
+logging:
+  level:
+    root: info

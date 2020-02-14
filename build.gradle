@@ -12,8 +12,23 @@ repositories {
 	mavenCentral()
 }
 
+AkkaVersion = "2.6.1"
+AlpakkaVersion = "1.1.2"
+AlpakkaKafkaVersion = "1.1.0"
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation "com.lightbend.akka:akka-stream-alpakka-elasticsearch:${AlpakkaVersion}"
+	implementation "com.typesafe.akka:akka-stream-kafka:${AlpakkaKafkaVersion}"
+	implementation "com.typesafe.akka:akka-stream:${AkkaVersion}"
+	implementation "com.typesafe.akka:akka-actor-typed:${AkkaVersion}"
+	implementation "com.typesafe.akka:akka-actor:${AkkaVersion}"
+	// for JSON in Java
+	implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.0"
+	implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.0"
+	// Logging
+	implementation "com.typesafe.akka:akka-slf4j:${AkkaVersion}"
+	implementation "ch.qos.logback:logback-classic:1.2.3"
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

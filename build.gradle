@@ -31,11 +31,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    //implementation "com.lightbend.akka:akka-stream-alpakka-elasticsearch:${AlpakkaVersion}"
-    //implementation "com.typesafe.akka:akka-stream-kafka:${AlpakkaKafkaVersion}"
-    //implementation "com.typesafe.akka:akka-stream:${AkkaVersion}"
-    //implementation "com.typesafe.akka:akka-actor-typed:${AkkaVersion}"
-    //implementation "com.typesafe.akka:akka-actor:${AkkaVersion}"
+    implementation "com.lightbend.akka:akka-stream-alpakka-elasticsearch_2.12:${AlpakkaVersion}"
+    implementation "com.typesafe.akka:akka-stream-kafka_2.13:${AlpakkaKafkaVersion}"
+    implementation "com.typesafe.akka:akka-stream_2.12:${AkkaVersion}"
+    implementation "com.typesafe.akka:akka-actor-typed_2.13:${AkkaVersion}"
+    implementation "com.typesafe.akka:akka-actor_2.13:${AkkaVersion}"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.globant.brainwaves'
+group = 'com.globant/BrainWaves/BWSegmenter'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

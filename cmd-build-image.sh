@@ -1,2 +1,2 @@
 ./cmd-clean-build.sh
-docker build . -t labs.globant.com/brainwaves/bw-segmenter
+docker build . -t brainwaves/bwsegmenter
